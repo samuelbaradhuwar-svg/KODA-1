@@ -1,0 +1,62 @@
+import React from "react";
+import { ArrowUpRight } from "lucide-react";
+import { Reveal } from "./ui/Reveal";
+import { Eyebrow } from "./ui/Eyebrow";
+import { scrollToId } from "../lib/utils";
+import { PORTFOLIO } from "../data/content";
+
+function ProjectCard({ project, i }) {
+  const Icon = project.icon;
+  return (
+    <Reveal delay={i * 70}>
+      <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-24px_rgba(15,23,42,0.25)]">
+        <div className={`relative flex h-52 items-center justify-center bg-gradient-to-br ${project.from} ${project.to} overflow-hidden`}>
+          <div className="nova-grid-light pointer-events-none absolute inset-0 opacity-20" />
+          <Icon className="h-16 w-16 text-white/90 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.4} />
+          <span className="absolute left-4 top-4 rounded-full bg-white/15 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
+            {project.type}
+          </span>
+        </div>
+        <div className="p-6">
+          <h3 className="font-display text-[16.5px] font-semibold text-slate-900">{project.name}</h3>
+          <p className="mt-2 text-[13.5px] leading-relaxed text-slate-500">{project.blurb}</p>
+          <button
+            onClick={() => scrollToId("contact")}
+            className="mt-5 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-blue-600 transition-colors hover:text-blue-700"
+          >
+            View Project
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </button>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+export default function Portfolio() {
+  return (
+    <section id="portfolio" data-nav-theme="light" className="bg-[#F8FAFC] py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <Reveal>
+            <Eyebrow>Our work</Eyebrow>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2 className="mt-5 font-display text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+              Real businesses, real results
+            </h2>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="mt-4 text-slate-500">A snapshot of the industries we love designing for.</p>
+          </Reveal>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {PORTFOLIO.map((p, i) => (
+            <ProjectCard key={p.name} project={p} i={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

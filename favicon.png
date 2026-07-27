@@ -1,0 +1,76 @@
+# KODA Website
+
+A premium, conversion focused website for KODA, built with React, Vite and Tailwind CSS.
+
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+The site will be available at `http://localhost:5173`.
+
+To build for production:
+
+```bash
+npm run build
+npm run preview
+```
+
+## Project structure
+
+```
+koda-website/
+├── index.html                  Vite HTML entry point
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── public/
+│   └── favicon.png             Browser tab icon (the KODA mark)
+└── src/
+    ├── main.jsx                React root
+    ├── App.jsx                 Assembles every section in order
+    ├── index.css                Tailwind directives, fonts, custom animations
+    ├── assets/
+    │   └── logo.js              Embedded KODA logo (black + white, base64 PNG)
+    ├── data/
+    │   └── content.js           All site copy and structured content (services,
+    │                            pricing, portfolio, testimonials, FAQ, nav links)
+    ├── lib/
+    │   └── utils.js             scrollToId helper (smooth scroll to a section)
+    └── components/
+        ├── ui/                  Shared building blocks
+        │   ├── Reveal.jsx        Scroll reveal animation wrapper
+        │   ├── Logo.jsx           Logo mark + wordmark (adapts to light/dark)
+        │   ├── Buttons.jsx       Primary and secondary button styles
+        │   └── Eyebrow.jsx       Small label pill used above section headings
+        ├── Navbar.jsx            Sticky nav, adapts colour to section behind it
+        ├── Hero.jsx              Hero section + animated laptop mockup
+        ├── Services.jsx
+        ├── WhyChooseUs.jsx
+        ├── Portfolio.jsx
+        ├── Pricing.jsx           Pricing cards + plan comparison table
+        ├── Testimonials.jsx
+        ├── Faq.jsx               Accordion FAQ
+        ├── CtaBand.jsx           Mid page call to action band
+        ├── Contact.jsx           Contact form, click to call/email, map
+        ├── Footer.jsx
+        └── WhatsAppButton.jsx    Floating WhatsApp button
+
+```
+
+## Notes
+
+- **Branding**: colours, fonts and the KODA logo are defined once in
+  `src/index.css` and `src/assets/logo.js`, so rebranding mostly means
+  editing those two files.
+- **Copy**: every piece of text on the site (service descriptions, pricing,
+  FAQ answers, testimonials) lives in `src/data/content.js`, separate from
+  the components that render it.
+- **Placeholders to update before launch**: the phone number, email address
+  and map location in `src/components/Contact.jsx` and
+  `src/components/Footer.jsx` are placeholders and should be replaced with
+  your real details.
+- **Icons** are from [lucide-react](https://lucide.dev).
